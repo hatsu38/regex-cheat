@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
         <title>Regex Cheat</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <Component {...pageProps} />
     </>
   )
