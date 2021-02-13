@@ -19,15 +19,14 @@ export default function MatchText() {
 
   const regex = new RegExp(`(${regexText})`, 'gmi')
   const parts = targetText.split(regex);
-
+  const filteredParts = parts.filter(part => Boolean && regex.test(part))
   return (
     <span>
-      {parts.filter(Boolean).map((part, i) => (
-        regex.test(part) &&
-          <React.Fragment key={i}>
-            <mark>{part}</mark>
-            <br />
-          </React.Fragment>
+      {filteredParts.map((part, i) => (
+        <React.Fragment key={i}>
+          <mark>{part}</mark>
+          <br />
+        </React.Fragment>
       ))}
     </span>
   )
