@@ -1,5 +1,6 @@
 import RegexForm from "../components/regex-form"
 import MatchTextForm from "../components/match-text-form"
+import RegexTemplates from "../components/regex-templates"
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       </div>
       <RegexForm />
       <MatchTextForm />
+      <RegexTemplates />
     </div>
   )
 }
