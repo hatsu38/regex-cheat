@@ -21,6 +21,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         regexText: action.regexText
       }
+    case "UPDATE_ALL_TEXT":
+      return {
+        targetText: action.targetText,
+        regexText: action.regexText
+      }
     default:
       return state
   }
