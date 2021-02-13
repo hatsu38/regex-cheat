@@ -57,6 +57,15 @@ https://this-shouldn't.match@example.com
 http://www.example.com/`
 }
 
+const birthDay = {
+  regexText: '[12]\\d{3}[/\\-年](0?[1-9]|1[0-2])[/\\-月](0?[1-9]|[12][0-9]|3[01])日?$',
+  targetText: `2020年2月22
+2020-2-22
+2020/2/22
+1985/01/12
+2010/12/11
+2022/02/22`
+}
 
 const useText = () => {
   const dispatch = useDispatch()
@@ -85,6 +94,8 @@ export default function RegexTemplates() {
           return updateText(phone)
       case "separatePhone":
         return updateText(separatePhone)
+      case "birthDay":
+        return updateText(birthDay)
       case "url":
         return updateText(url)
     }
@@ -97,7 +108,7 @@ export default function RegexTemplates() {
       <div onClick={() => handleTemplate("zipCode")}>ハイフンなし郵便番号</div>
       <div onClick={() => handleTemplate("separateZipCode")}>ハイフンあり郵便番号</div>
       <div onClick={() => handleTemplate("email")}>メールアドレス</div>
-      <div onClick={() => handleTemplate("email")}>生年月日</div>
+      <div onClick={() => handleTemplate("birthDay")}>生年月日</div>
       <div onClick={() => handleTemplate("url")}>URL</div>
     </div>
   )
