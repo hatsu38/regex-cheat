@@ -6,7 +6,15 @@ let store
 
 const initialState = {
   regexText: "",
-  targetText: ""
+  targetText: "",
+  regexFlags: [
+    ["g", true],
+    ["m", true],
+    ["i", true],
+    ["s", false],
+    ["u", false],
+    ["y", false],
+  ],
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,7 +32,13 @@ const reducer = (state = initialState, action) => {
     case "UPDATE_ALL_TEXT":
       return {
         targetText: action.targetText,
-        regexText: action.regexText
+        regexText: action.regexText,
+        regexFlags: initialState.regexFlags,
+      }
+    case "UPDATE_FLAGS":
+      return {
+        ...state,
+        regexFlags: action.regexFlags,
       }
     default:
       return state

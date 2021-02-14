@@ -21,7 +21,7 @@ export default function MatchTextForm() {
   const textAreaRow = Math.max(lfCount, 4)
 
   return (
-    <>
+    <React.Fragment>
       <label className="block mt-5">
         <span className="dark:text-green-400">テスト文章</span>
         <textarea
@@ -33,6 +33,6 @@ export default function MatchTextForm() {
         />
       </label>
       <MatchText />
-    </>
+    </React.Fragment>
   )
 }
