@@ -18,11 +18,10 @@ export default function MatchText() {
   const { targetText, regexText, regexFlags } = useTargetText()
   if (!regexText.trim()) { return null }
 
-  const trueFlags = regexFlags.filter(flag => flag[1])
-  const trueFlagsObj = Object.fromEntries(trueFlags)
-  const trueFlagsKeys = Object.keys(trueFlagsObj)
+  const trueFlags = regexFlags.filter(flag => flag.checked)
+  const trueFlagsKeys = trueFlags.map(flag => flag.name)
   const regex = new RegExp(`(${regexText})`, trueFlagsKeys.join(""))
-  const parts = targetText.split(regex);
+  const parts = targetText.split(regex)
   const filteredParts = parts.filter(part => Boolean && regex.test(part))
   return (
     <span>
