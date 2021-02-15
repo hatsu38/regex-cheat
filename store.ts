@@ -8,12 +8,12 @@ const initialState = {
   regexText: "",
   targetText: "",
   regexFlags: [
-    ["g", true],
-    ["m", true],
-    ["i", true],
-    ["s", false],
-    ["u", false],
-    ["y", false],
+    { name: "g", checked: true },
+    { name: "m", checked: true },
+    { name: "i", checked: true },
+    { name: "s", checked: false },
+    { name: "u", checked: false },
+    { name: "y", checked: false },
   ],
 }
 
