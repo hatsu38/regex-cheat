@@ -8,12 +8,9 @@ const initialState = {
   regexText: "",
   targetText: "",
   regexFlags: [
-    { name: "g", checked: true },
-    { name: "m", checked: true },
-    { name: "i", checked: true },
-    { name: "s", checked: false },
-    { name: "u", checked: false },
-    { name: "y", checked: false },
+    { name: "g", checked: true, note: "すべての一致" },
+    { name: "m", checked: true, note: "複数行の一致" },
+    { name: "i", checked: true, note: "大文字/小文字を区別しない" },
   ],
 }
 
