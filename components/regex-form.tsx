@@ -1,4 +1,4 @@
-import RegexFlagsForm from "./regex-flags-form"
+import FlagsModal from "./flags-modal"
 import { useSelector, useDispatch } from 'react-redux'
 
 const useRegexText = () => {
@@ -17,8 +17,11 @@ export default function RegexForm() {
 
   return (
     <>
-      <label className="block">
+      <div className="flex justify-between">
         <span className="dark:text-green-400">正規表現</span>
+        <FlagsModal />
+      </div>
+      <label className="block">
         <input
           type="text"
           value={regexText}
@@ -27,7 +30,6 @@ export default function RegexForm() {
           onChange={e => updateRegexText(e.target.value)}
         />
       </label>
-      <RegexFlagsForm />
     </>
   )
 }
