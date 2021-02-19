@@ -21,17 +21,22 @@ export default function MatchText() {
   const trueFlags = regexFlags.filter(flag => flag.checked)
   const trueFlagsKeys = trueFlags.map(flag => flag.name)
   const regex = new RegExp(`(${regexText})`, trueFlagsKeys.join(""))
-  const parts = targetText.split(regex)
-  console.log("parts", parts)
-  const filteredParts = parts.filter(part => Boolean && regex.test(part))
+  const lines = targetText.split("\n")
+
   return (
-    <span>
-      {filteredParts.map((part, i) => (
+    <div className="overflow-auto">
+      <div className="absolute top-0 form-input mt-1 text-xl bg-transparent">
+      {lines.map((line, i) =>
         <React.Fragment key={i}>
-          <mark>{part}</mark>
+          {line.split(" ").map((part, j) =>
+            <React.Fragment key={j}>
+              {regex.test(part) ? <mark key={j} className="rounded bg-green-300">{part}</mark> : <span key={j}>{part}</span>}{" "}
+            </React.Fragment>
+          )}
           <br />
         </React.Fragment>
-      ))}
-    </span>
+        )}
+      </div>
+    </div>
   )
 }

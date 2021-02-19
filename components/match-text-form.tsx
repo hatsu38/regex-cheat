@@ -2,6 +2,7 @@ import React from "react"
 import { useSelector, useDispatch } from 'react-redux'
 
 import MatchText from "./match-text"
+import ContentEditable from 'react-contenteditable'
 
 const useTargetText = () => {
   const targetText = useSelector((state) => state.targetText)
@@ -23,16 +24,18 @@ export default function MatchTextForm() {
   return (
     <React.Fragment>
       <label className="block mt-5">
-        <span className="dark:text-green-400">テスト文章</span>
-        <textarea
-          rows={textAreaRow}
-          className="resize-y form-input mt-1 block w-full text-xl rounded-md dark:bg-gray-100 dark:text-gray-800 focus:ring focus:border-white"
-          placeholder="0120-1234-5678"
-          value={targetText}
-          onChange={e => updateTargetText(e.target.value)}
-        />
+        <p className="dark:text-green-400">テスト文章</p>
+        <div className="relative z-0 dark:bg-gray-100 focus:ring focus:border-white rounded-md dark:text-gray-800 ">
+          <MatchText />
+          <textarea
+            rows={textAreaRow}
+            className="relative form-input mt-1 block w-full text-xl bg-transparent z-10"
+            placeholder="0120-1234-5678"
+            value={targetText}
+            onChange={e => updateTargetText(e.target.value)}
+          />
+        </div>
       </label>
-      <MatchText />
     </React.Fragment>
   )
 }

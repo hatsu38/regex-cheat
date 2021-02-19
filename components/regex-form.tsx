@@ -33,7 +33,7 @@ export default function RegexForm() {
           disabled={false}
           onChange={e => updateRegexText(e.target.value)}
           tagName='div'
-          className="dark:text-gray-700 "
+          className="dark:text-gray-700"
         />
         <div className="dark:text-gray-500 outline-none flex" onClick={() => setShowModal(true)}>
           <span>{trueFlagsKeys}</span>
