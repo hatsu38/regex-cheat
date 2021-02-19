@@ -1,16 +1,23 @@
+import Sidebar from "../components/sidebar"
+import Header from "../components/header"
 import RegexForm from "../components/regex-form"
 import MatchTextForm from "../components/match-text-form"
 import RegexTemplates from "../components/regex-templates"
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
-      <div className="my-4">
-        <h1 className="italic text-center text-5xl mt-20 dark:text-green-400">Regex Cheat</h1>
+    <>
+      <Header />
+      <div id="main" className="pt-16 grid grid-cols-12">
+        <Sidebar />
+        <div className="h-full pt-8 col-span-10 mx-10">
+          <div className="text-gray-darkest">
+            <RegexForm />
+            <MatchTextForm />
+            <RegexTemplates />
+          </div>
+        </div>
       </div>
-      <RegexForm />
-      <MatchTextForm />
-      <RegexTemplates />
-    </div>
+    </>
   )
 }
