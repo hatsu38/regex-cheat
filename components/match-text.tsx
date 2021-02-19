@@ -22,6 +22,7 @@ export default function MatchText() {
   const trueFlagsKeys = trueFlags.map(flag => flag.name)
   const regex = new RegExp(`(${regexText})`, trueFlagsKeys.join(""))
   const parts = targetText.split(regex)
+  console.log("parts", parts)
   const filteredParts = parts.filter(part => Boolean && regex.test(part))
   return (
     <span>

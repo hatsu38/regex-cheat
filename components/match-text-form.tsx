@@ -28,7 +28,7 @@ export default function MatchTextForm() {
           rows={textAreaRow}
           className="resize-y form-input mt-1 block w-full text-xl rounded-md dark:bg-gray-100 dark:text-gray-800 focus:ring focus:border-white"
           placeholder="0120-1234-5678"
-          defaultValue={targetText}
+          value={targetText}
           onChange={e => updateTargetText(e.target.value)}
         />
       </label>

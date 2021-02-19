@@ -12,7 +12,7 @@ export default function FlagsModal(props) {
             <h2 className="head-title dark:text-green-400">Flags</h2>
             <RegexFlagsForm />
             <button type="button" name="button" className="text-white" onClick={() => setShowModal(false)}>
-                閉じる
+              閉じる
             </button>
           </div>
         </div>

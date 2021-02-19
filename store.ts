@@ -10,7 +10,7 @@ const initialState = {
   regexFlags: [
     { name: "g", checked: true, note: "すべての一致" },
     { name: "m", checked: true, note: "複数行の一致" },
-    { name: "i", checked: true, note: "大文字/小文字を区別しない" },
+    { name: "i", checked: false, note: "大文字/小文字を区別しない" },
   ],
 }
 
