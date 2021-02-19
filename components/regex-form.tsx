@@ -27,7 +27,7 @@ export default function RegexForm() {
         <span className="dark:text-green-400">正規表現</span>
         <a className="dark:text-green-400" onClick={() => setShowModal(true)}>Flags</a>
       </div>
-      <div className="grid grid-cols-9 justify-between text-2xl py-4 form-input mt-1 block w-full rounded-md dark:bg-gray-100">
+      <div className="grid grid-cols-9 justify-between text-2xl py-4 form-input mt-1 block w-full  dark:bg-gray-100">
         <ContentEditable
           html={`${regexText}`}
           disabled={false}
