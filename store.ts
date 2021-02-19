@@ -5,8 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 let store
 
 const initialState = {
-  regexText: "",
-  targetText: "",
+  regexText: "([A-Z])\\w+",
+  targetText: "RegExr was created by gskinner.com, and is proudly hosted by Media Temple.",
   regexFlags: [
     { name: "g", checked: true, note: "すべての一致" },
     { name: "m", checked: true, note: "複数行の一致" },
