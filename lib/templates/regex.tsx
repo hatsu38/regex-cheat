@@ -148,13 +148,128 @@ https://this-shouldn't.match@example.com
 http://www.example.com/`
 }
 
-const date = {
-  code: "brithDay",
-  name: "日付",
-  sample: "2021-2-14",
-  regexText: '[12]\\d{3}[/\\-年](0?[1-9]|1[0-2])[/\\-月](0?[1-9]|[12][0-9]|3[01])日?$',
+const withZeroHyphenDate = {
+  code: "date",
+  name: "ハイフン区切り日付",
+  sample: "2021-02-14",
+  regexText: '^[12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$',
   targetText: `2020年2月22日 
-2020-2-22 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withoutZeroHyphenDate = {
+  code: "date",
+  name: "ハイフン区切り日付",
+  sample: "2021-02-14",
+  regexText: '^[12]\\d{3}-([1-9]|1[0-2])-([1-9]|[12][0-9]|3[01])$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withZeroSlashDate = {
+  code: "date",
+  name: "スラッシュ区切り日付",
+  sample: "2021/02/14",
+  regexText: '^[12]\\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withoutZeroSlashDate = {
+  code: "date",
+  name: "スラッシュ区切り日付",
+  sample: "2021/02/14",
+  regexText: '^[12]\\d{3}/([1-9]|1[0-2])/([1-9]|[12][0-9]|3[01])$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withZeroJaDate = {
+  code: "date",
+  name: "年月日区切り日付",
+  sample: "2021年02月14日",
+  regexText: '^[12]\\d{3}年(0[1-9]|1[0-2])月(0[1-9]|[12][0-9]|3[01])日$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withoutZeroJaDate = {
+  code: "date",
+  name: "年月日区切り日付",
+  sample: "2021年02月14日",
+  regexText: '^[12]\\d{3}年([1-9]|1[0-2])月(0[1-9]|[12][0-9]|3[01])日$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withZeroSeparateDate = {
+  code: "date",
+  name: "指定なし区切り日付",
+  sample: "2021-2-14",
+  regexText: '^[12]\\d{3}[/\\-年](0[1-9]|1[0-2])[/\\-月](0[1-9]|[12][0-9]|3[01])?$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
+2020/2/22 
+1985/01/12 
+2010/12/11 
+2022/02/22`
+}
+
+const withoutZeroSeparateDate = {
+  code: "date",
+  name: "指定なし区切り日付",
+  sample: "2021-2-14",
+  regexText: '^[12]\\d{3}[/\\-年]([1-9]|1[0-2])[/\\-月]([1-9]|[12][0-9]|3[01])?$',
+  targetText: `2020年2月22日 
+1999年01月30日 
+2020-03-31 
+2020-2-28 
+2020-12-31 
 2020/2/22 
 1985/01/12 
 2010/12/11 
@@ -176,7 +291,13 @@ export const groups = [
   },
   {
     name: "日付",
-    regularExpressions: [date]
+    zeroPadding: true,
+    regularExpressions: [withZeroHyphenDate, withZeroSlashDate, withZeroJaDate, withZeroSeparateDate]
+  },
+  {
+    name: "日付",
+    zeroPadding: false,
+    regularExpressions: [withoutZeroHyphenDate, withoutZeroSlashDate, withoutZeroJaDate, withoutZeroSeparateDate]
   },
   {
     name: "URL",

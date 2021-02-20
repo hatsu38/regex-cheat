@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
 import RegexFlagsForm from "./regex-flags-form"
 
 export default function FlagsModal(props) {
   const { setShowModal } = props
   return (
-    <React.Fragment>
+    <>
       <div className="modal-wrapper">
         <a className="modal-overlay" onClick={() => setShowModal(false)}></a>
         <div className="modal-window">
@@ -17,6 +16,6 @@ export default function FlagsModal(props) {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }

@@ -9,13 +9,13 @@ export default function Sidebar() {
         </div>
         <div className="">
           <a href="#" className="block sm:flex sm:items-center text-center sm:text-left shadow-light sm:shadow-none py-6 sm:py-2 sm:px-4 border-l-4 border-transparent hover:bg-black">
-            <Twitter />
+            <Twitter classNames={"h-6 w-6 dark:text-green-500 fill-current sm:mr-2"} />
             <div className="text-white text-sm">Twitter</div>
           </a>
         </div>
         <div className="">
           <a href="#" className="block sm:flex sm:items-center text-center sm:text-left shadow-light sm:shadow-none py-6 sm:py-2 sm:px-4 border-l-4 border-transparent hover:bg-black">
-            <Github />
+            <Github classNames={"h-6 w-6 dark:text-green-500 fill-current sm:mr-2"} />
             <div className="text-white text-sm">Github</div>
           </a>
         </div>
