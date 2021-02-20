@@ -13,7 +13,6 @@ const useText = () => {
   return { dispatch, updateText }
 }
 
-
 export default function RegexTemplates() {
   const { updateText } = useText()
 
