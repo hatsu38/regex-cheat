@@ -182,7 +182,7 @@ const withoutZeroHyphenDate = {
 
 const withZeroSlashDate = {
   code: "date",
-  name: "withスラッシュ区切り日付",
+  name: "スラッシュ区切り日付",
   sample: "2021/02/14",
   regexText: '^[12]\\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$',
   targetText: `2020年2月22日 
@@ -198,7 +198,7 @@ const withZeroSlashDate = {
 
 const withoutZeroSlashDate = {
   code: "date",
-  name: "withoutスラッシュ区切り日付",
+  name: "スラッシュ区切り日付",
   sample: "2021/02/14",
   regexText: '^[12]\\d{3}/([1-9]|1[0-2])/([1-9]|[12][0-9]|3[01])$',
   targetText: `2020年2月22日 
