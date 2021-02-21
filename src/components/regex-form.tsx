@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FlagsModal from "./flags-modal"
 import { useSelector, useDispatch } from 'react-redux'
 import ContentEditable from 'react-contenteditable'

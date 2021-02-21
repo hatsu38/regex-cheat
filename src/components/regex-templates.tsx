@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import groups from '../lib/templates/regex'
+import { useState } from 'react'
+import groups from '../../lib/templates/regex'
 import RegexTemplateDetails from "./regex-template-details"
 
 export default function RegexTemplates() {
