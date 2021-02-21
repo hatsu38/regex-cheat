@@ -191,19 +191,17 @@ const zipCode = {
 12-34567`
 }
 
-const url = {
-  code: "url",
+const withParamsUrl = {
+  code: "withParamsUrl",
   name: "URL",
   sample: "https://example.com",
   regexText: '^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)',
-  targetText: `abcdef
-www.whatever.com
-https://github.com/geongeorge/i-hate-regex
-https://www.facebook.com/
-https://www.google.com/
-https://xkcd.com/2293/
-https://this-shouldn't.match@example.com
-http://www.example.com/`
+  targetText: `abcdef 
+www.whatever.com 
+http://www.example.com/ 
+https://example.co.jp/index.html 
+http://example.com/index?keyword=sample 
+https://this-shouldn't.match@example.com`
 }
 
 const withZeroHyphenDate = {
@@ -349,6 +347,11 @@ export const groups = [
     regularExpressions: [withZeroHyphenDate, withZeroSlashDate, withZeroJaDate, withZeroSeparateDate]
   },
   {
+    name: "日付",
+    zeroPadding: false,
+    regularExpressions: [withoutZeroHyphenDate, withoutZeroSlashDate, withoutZeroJaDate, withoutZeroSeparateDate]
+  },
+  {
     name: "電話番号",
     regularExpressions: [combinePhone, separatePhone, phone]
   },
@@ -357,13 +360,8 @@ export const groups = [
     regularExpressions: [combineZipCode, separateZipCode, zipCode]
   },
   {
-    name: "日付",
-    zeroPadding: false,
-    regularExpressions: [withoutZeroHyphenDate, withoutZeroSlashDate, withoutZeroJaDate, withoutZeroSeparateDate]
-  },
-  {
     name: "URL",
-    regularExpressions: [url]
+    regularExpressions: [withParamsUrl]
   },
   {
     name: "Email",
