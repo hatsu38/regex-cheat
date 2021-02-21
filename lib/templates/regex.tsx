@@ -48,6 +48,64 @@ ABC123
 あいうえお`
 }
 
+const hiragana = {
+  code: "hiragana",
+  name: "ひらがな",
+  sample: "あいうえお",
+  regexText: '^[ぁ-ん]+$',
+  targetText: `あいうえお
+アイウエオ
+ｱｲｳｴｵ
+AiUeo
+漢字
+かきKukeko
+あかさたな
+`
+}
+
+const zenkakuKatakana = {
+  code: "zenkakuKatakana",
+  name: "全角カタカナ",
+  sample: "アイウエオ",
+  regexText: '^[ァ-ヶ]+$',
+  targetText: `あいうえお
+アイウエオ
+AiUeo
+ｱｲｳｴｵ
+漢字
+かきKukeko
+あかさたな`
+}
+
+const hankakuKatakana = {
+  code: "hankakuKatakana",
+  name: "半角カタカナ",
+  sample: "アイウエオ",
+  regexText: '^[ｦ-ﾟ]+$',
+  targetText: `あいうえお
+アイウエオ
+AiUeo
+ｱｲｳｴｵ
+漢字
+かきKukeko
+あかさたな`
+}
+
+const kanji = {
+  code: "kanji",
+  name: "漢字",
+  sample: "漢字",
+  regexText: '^[一-龥]+$',
+  targetText: `あいうえお
+アイウエオ
+AiUeo
+ｱｲｳｴｵ
+漢字
+かきKukeko
+あかさたな`
+}
+
+
 const email = {
   code: "email",
   name: "Email",
@@ -133,23 +191,21 @@ const zipCode = {
 12-34567`
 }
 
-const url = {
-  code: "url",
+const withParamsUrl = {
+  code: "withParamsUrl",
   name: "URL",
   sample: "https://example.com",
   regexText: '^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)',
-  targetText: `abcdef
-www.whatever.com
-https://github.com/geongeorge/i-hate-regex
-https://www.facebook.com/
-https://www.google.com/
-https://xkcd.com/2293/
-https://this-shouldn't.match@example.com
-http://www.example.com/`
+  targetText: `abcdef 
+www.whatever.com 
+http://www.example.com/ 
+https://example.co.jp/index.html 
+http://example.com/index?keyword=sample 
+https://this-shouldn't.match@example.com`
 }
 
 const withZeroHyphenDate = {
-  code: "date",
+  code: "withZeroHyphenDate",
   name: "ハイフン区切り日付",
   sample: "2021-02-14",
   regexText: '^[12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$',
@@ -165,7 +221,7 @@ const withZeroHyphenDate = {
 }
 
 const withoutZeroHyphenDate = {
-  code: "date",
+  code: "withoutZeroHyphenDate",
   name: "ハイフン区切り日付",
   sample: "2021-02-14",
   regexText: '^[12]\\d{3}-([1-9]|1[0-2])-([1-9]|[12][0-9]|3[01])$',
@@ -181,7 +237,7 @@ const withoutZeroHyphenDate = {
 }
 
 const withZeroSlashDate = {
-  code: "date",
+  code: "dawithZeroSlashDatee",
   name: "スラッシュ区切り日付",
   sample: "2021/02/14",
   regexText: '^[12]\\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$',
@@ -197,7 +253,7 @@ const withZeroSlashDate = {
 }
 
 const withoutZeroSlashDate = {
-  code: "date",
+  code: "withoutZeroSlashDate",
   name: "スラッシュ区切り日付",
   sample: "2021/02/14",
   regexText: '^[12]\\d{3}/([1-9]|1[0-2])/([1-9]|[12][0-9]|3[01])$',
@@ -213,7 +269,7 @@ const withoutZeroSlashDate = {
 }
 
 const withZeroJaDate = {
-  code: "date",
+  code: "withZeroJaDate",
   name: "年月日区切り日付",
   sample: "2021年02月14日",
   regexText: '^[12]\\d{3}年(0[1-9]|1[0-2])月(0[1-9]|[12][0-9]|3[01])日$',
@@ -229,7 +285,7 @@ const withZeroJaDate = {
 }
 
 const withoutZeroJaDate = {
-  code: "date",
+  code: "withoutZeroJaDate",
   name: "年月日区切り日付",
   sample: "2021年02月14日",
   regexText: '^[12]\\d{3}年([1-9]|1[0-2])月(0[1-9]|[12][0-9]|3[01])日$',
@@ -245,7 +301,7 @@ const withoutZeroJaDate = {
 }
 
 const withZeroSeparateDate = {
-  code: "date",
+  code: "withZeroSeparateDate",
   name: "指定なし区切り日付",
   sample: "2021-2-14",
   regexText: '^[12]\\d{3}[/\\-年](0[1-9]|1[0-2])[/\\-月](0[1-9]|[12][0-9]|3[01])?$',
@@ -261,7 +317,7 @@ const withZeroSeparateDate = {
 }
 
 const withoutZeroSeparateDate = {
-  code: "date",
+  code: "withoutZeroSeparateDate",
   name: "指定なし区切り日付",
   sample: "2021-2-14",
   regexText: '^[12]\\d{3}[/\\-年]([1-9]|1[0-2])[/\\-月]([1-9]|[12][0-9]|3[01])?$',
@@ -282,12 +338,8 @@ export const groups = [
     regularExpressions: [alphanumeric, alphabets, uppercaseAlphabets, numbers]
   },
   {
-    name: "電話番号",
-    regularExpressions: [combinePhone, separatePhone, phone]
-  },
-  {
-    name: "郵便番号",
-    regularExpressions: [combineZipCode, separateZipCode, zipCode]
+    name: "日本語",
+    regularExpressions: [hiragana, zenkakuKatakana, hankakuKatakana, kanji]
   },
   {
     name: "日付",
@@ -300,8 +352,16 @@ export const groups = [
     regularExpressions: [withoutZeroHyphenDate, withoutZeroSlashDate, withoutZeroJaDate, withoutZeroSeparateDate]
   },
   {
+    name: "電話番号",
+    regularExpressions: [combinePhone, separatePhone, phone]
+  },
+  {
+    name: "郵便番号",
+    regularExpressions: [combineZipCode, separateZipCode, zipCode]
+  },
+  {
     name: "URL",
-    regularExpressions: [url]
+    regularExpressions: [withParamsUrl]
   },
   {
     name: "Email",

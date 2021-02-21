@@ -25,7 +25,7 @@ export default function RegexTemplates() {
             )}
           </div>
           {group.regularExpressions.map(regex =>
-            <RegexTemplateDetails regex={regex} />
+            <RegexTemplateDetails regex={regex} key={regex.code}/>
           )}
         </div>
       )}
