@@ -8,11 +8,11 @@ type State = {
 }
 
 type Regex = {
-  code: number
-  name: number
-  targetText: number
-  regexText: number
-  sample: number
+  code: string
+  name: string
+  targetText: string
+  regexText: string
+  sample: string
 }
 
 type Props = {
