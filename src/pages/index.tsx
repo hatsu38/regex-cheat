@@ -1,10 +1,10 @@
-import Sidebar from "../components/sidebar"
-import Header from "../components/header"
-import RegexForm from "../components/regex-form"
-import MatchTextForm from "../components/match-text-form"
-import RegexTemplates from "../components/regex-templates"
+import Sidebar from '../components/sidebar'
+import Header from '../components/header'
+import RegexForm from '../components/regex-form'
+import MatchTextForm from '../components/match-text-form'
+import RegexTemplates from '../components/regex-templates'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <>
       <Header />
@@ -21,3 +21,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home

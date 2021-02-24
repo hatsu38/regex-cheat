@@ -1,33 +1,47 @@
-import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+
+type Event = {
+  target: {
+    name: string
+    checked: boolean
+  }
+}
+
+type Flag = {
+  name: string
+  checked: boolean
+  note: string
+}
 
 const useFlags = () => {
   const flags = useSelector((state) => state.regexFlags)
   const dispatch = useDispatch()
-  const updateFlags = (value) =>
+  const updateFlags = (value: []) =>
     dispatch({
-      type: "UPDATE_FLAGS",
-      regexFlags: value
+      type: 'UPDATE_FLAGS',
+      regexFlags: value,
     })
   return { flags, dispatch, updateFlags }
 }
 
-export default function RegexFlagsForm() {
+const RegexFlagsForm: React.FC = () => {
   const { flags, updateFlags } = useFlags()
-  const handleCheckBox = (e) => {
-    const { name, checked } = e.target
-    const newFlags = flags.map(flag => {
-      if(flag.name != name) { return flag }
+  const handleCheckBox = (event: Event) => {
+    const { name, checked } = event.target
+    const newFlags = flags.map((flag: Flag) => {
+      if (flag.name != name) {
+        return flag
+      }
       return { name: name, checked: checked, note: flag.note }
     })
     updateFlags(newFlags)
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className="flex flex-col items-center justify-center mb-3">
         <div className="flex flex-col">
-          {flags.map(flag =>
+          {flags.map((flag: Flag) => (
             <label className="inline-flex items-center mt-3" key={flag.name}>
               <input
                 type="checkbox"
@@ -37,13 +51,17 @@ export default function RegexFlagsForm() {
                 onChange={(e) => handleCheckBox(e)}
               />
               <p className="ml-2">
-                <span className="dark:text-green-400 font-bold">{flag.name}</span>
+                <span className="dark:text-green-400 font-bold">
+                  {flag.name}
+                </span>
                 <span className="text-white">：{flag.note}</span>
               </p>
             </label>
-          )}
+          ))}
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
+
+export default RegexFlagsForm
