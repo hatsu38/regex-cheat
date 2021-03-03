@@ -5,6 +5,7 @@ type State = {
   targetText: string
   regexText: string
   regexFlags: []
+  selected_name: string
 }
 
 type Regex = {
@@ -13,6 +14,7 @@ type Regex = {
   targetText: string
   regexText: string
   sample: string
+  selected_name: string
 }
 
 type Props = {
@@ -20,19 +22,20 @@ type Props = {
 }
 
 const useText = () => {
-  const regexText = useSelector((state: State) => state.regexText)
+  const storeRegex = useSelector((state: State) => state)
   const dispatch = useDispatch()
   const updateText = (obj: Regex) =>
     dispatch({
       type: 'UPDATE_ALL_TEXT',
       targetText: obj.targetText,
       regexText: obj.regexText,
+      selected_name: obj.name,
     })
-  return { regexText, dispatch, updateText }
+  return { storeRegex, dispatch, updateText }
 }
 
 const RegexTemplateDetails: React.FC<Props> = (props) => {
-  const { regexText, updateText } = useText()
+  const { storeRegex, updateText } = useText()
   const { regex } = props
 
   return (
@@ -46,7 +49,9 @@ const RegexTemplateDetails: React.FC<Props> = (props) => {
     >
       <PlayCircle
         classNames={`mr-2 ${
-          regexText === regex.regexText ? 'text-green-500' : 'text-gray-400'
+          regex.name === storeRegex.selected_name
+            ? 'text-green-500'
+            : 'text-gray-400'
         }`}
       />
       <dl className="grid grid-cols-1 text-gray-800">

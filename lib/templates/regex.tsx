@@ -1,4 +1,4 @@
-const alphanumeric = {
+export const alphanumeric = {
   code: 'alphanumeric',
   name: '半角英数字',
   sample: 'ABCdef012',

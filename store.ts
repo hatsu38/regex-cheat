@@ -1,13 +1,14 @@
 import { useMemo } from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { alphanumeric } from 'lib/templates/regex'
 
 let store
 
 const initialState = {
-  regexText: '([A-Z])\\w+',
-  targetText:
-    'RegExr was created by gskinner.com, and is proudly hosted by Media Temple.',
+  regexText: alphanumeric.regexText,
+  targetText: alphanumeric.targetText,
+  selected_name: alphanumeric.name,
   regexFlags: [
     { name: 'g', checked: true, note: 'すべての一致' },
     { name: 'm', checked: true, note: '複数行の一致' },
@@ -15,7 +16,15 @@ const initialState = {
   ],
 }
 
-const reducer = (state = initialState, action) => {
+type Action = {
+  type: string
+  targetText: string
+  regexText: string
+  selected_name: string
+  regexFlags: []
+}
+
+const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case 'UPDATE_TARGET_TEXT':
       return {
@@ -32,6 +41,7 @@ const reducer = (state = initialState, action) => {
         targetText: action.targetText,
         regexText: action.regexText,
         regexFlags: initialState.regexFlags,
+        selected_name: action.selected_name,
       }
     case 'UPDATE_FLAGS':
       return {
