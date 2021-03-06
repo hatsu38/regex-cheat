@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ContentEditable from 'react-contenteditable'
 import FlagsModal from './flags-modal'
+import RegexValidMessage from './regex-valid-message'
 
 type Flag = {
   name: string
@@ -9,6 +10,17 @@ type Flag = {
   regexText: string
   regexFlags: []
   checked: boolean
+}
+
+const tryRegex = (regexText: string, trueFlagsKeys: string) => {
+  try {
+    return {
+      status: true,
+      text: new RegExp(`(${regexText})`, trueFlagsKeys),
+    }
+  } catch (error) {
+    return { status: false, text: error }
+  }
 }
 
 const useRegexText = () => {
@@ -28,6 +40,7 @@ const RegexForm: React.FC = () => {
   const { regexText, regexFlags, updateRegexText } = useRegexText()
   const trueFlags = regexFlags.filter((flag: Flag) => flag.checked)
   const trueFlagsKeys = trueFlags.map((flag: Flag) => flag.name).join('')
+  const regexWithStatus = tryRegex(regexText, trueFlagsKeys)
 
   return (
     <>
@@ -76,6 +89,7 @@ const RegexForm: React.FC = () => {
         </div>
       </div>
       {showModal && <FlagsModal setShowModal={setShowModal} />}
+      {!regexWithStatus.status && <RegexValidMessage />}
     </>
   )
 }
