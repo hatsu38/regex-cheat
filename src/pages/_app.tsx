@@ -1,10 +1,11 @@
 import Head from 'next/head'
+import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { useStore } from '../../store'
 import '../styles/modal.scss'
 import 'tailwindcss/tailwind.css'
 
-const MyApp: React.FC = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState)
 
   return (

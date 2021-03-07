@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { alphanumeric } from 'lib/templates/regex'
 
-let store
+let store: any
 
 const initialState = {
   regexText: alphanumeric.regexText,
@@ -14,6 +14,13 @@ const initialState = {
     { name: 'm', checked: true, note: '複数行の一致' },
     { name: 'i', checked: false, note: '大文字/小文字を区別しない' },
   ],
+}
+
+type State = {
+  regexText: string
+  targetText: string
+  selected_name: string
+  regexFlags: []
 }
 
 type Action = {
@@ -61,7 +68,7 @@ function initStore(preloadedState = initialState) {
   )
 }
 
-export const initializeStore = (preloadedState) => {
+export const initializeStore = (preloadedState: any) => {
   let _store = store ?? initStore(preloadedState)
 
   // After navigating to a page with an initial Redux state, merge that state
@@ -83,7 +90,7 @@ export const initializeStore = (preloadedState) => {
   return _store
 }
 
-export function useStore(initialState) {
+export function useStore(initialState: State) {
   const store = useMemo(() => initializeStore(initialState), [initialState])
   return store
 }

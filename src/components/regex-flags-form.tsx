@@ -13,10 +13,16 @@ type Flag = {
   note: string
 }
 
+type State = {
+  targetText: string
+  regexText: string
+  regexFlags: []
+}
+
 const useFlags = () => {
-  const flags = useSelector((state) => state.regexFlags)
+  const flags = useSelector((state: State) => state.regexFlags)
   const dispatch = useDispatch()
-  const updateFlags = (value: []) =>
+  const updateFlags = (value: {}) =>
     dispatch({
       type: 'UPDATE_FLAGS',
       regexFlags: value,
