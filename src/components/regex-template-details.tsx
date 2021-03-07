@@ -14,11 +14,16 @@ type Regex = {
   targetText: string
   regexText: string
   sample: string
-  selected_name: string
 }
 
 type Props = {
-  regex: Regex
+  regex: {
+    code: string
+    name: string
+    targetText: string
+    regexText: string
+    sample: string
+  }
 }
 
 const useText = () => {
