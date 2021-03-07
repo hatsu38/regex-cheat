@@ -20,7 +20,7 @@ const RegexValidMessage: React.FC = () => {
             <line x1="12" y1="16" x2="12.01" y2="16"></line>
           </svg>
         </div>
-        <div className="text-xl font-normal max-w-full flex-initial">
+        <div className="text-lg font-normal max-w-full flex-initial">
           正規表現に誤りがあります
         </div>
       </div>

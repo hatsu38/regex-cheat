@@ -14,12 +14,10 @@ type Flag = {
 
 const tryRegex = (regexText: string, trueFlagsKeys: string) => {
   try {
-    return {
-      status: true,
-      text: new RegExp(`(${regexText})`, trueFlagsKeys),
-    }
+    new RegExp(`(${regexText})`, trueFlagsKeys)
+    return true
   } catch (error) {
-    return { status: false, text: error }
+    return false
   }
 }
 
@@ -62,7 +60,7 @@ const RegexForm: React.FC = () => {
           disabled={false}
           onChange={(e) => updateRegexText(e.target.value)}
           tagName="div"
-          className="dark:text-gray-700 col-span-8"
+          className="dark:text-gray-700 col-span-8 outline-none"
         />
         <div
           role="button"
@@ -89,7 +87,7 @@ const RegexForm: React.FC = () => {
         </div>
       </div>
       {showModal && <FlagsModal setShowModal={setShowModal} />}
-      {!regexWithStatus.status && <RegexValidMessage />}
+      {!regexWithStatus && <RegexValidMessage />}
     </>
   )
 }
