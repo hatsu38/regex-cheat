@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <Header />
       <div id="main" className="pt-16 grid grid-cols-12">
         <Sidebar />
-        <div className="h-full pt-8 col-span-10 mx-10">
+        <div className="h-full pt-8 col-span-10 px-4 md:px-8">
           <div className="text-gray-darkest">
             <RegexForm />
             <MatchTextForm />
