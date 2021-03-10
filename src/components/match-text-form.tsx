@@ -29,7 +29,7 @@ const MatchTextForm: React.FC = () => {
     <React.Fragment>
       <label className="block mt-5">
         <p className="dark:text-green-400">テスト文章</p>
-        <div className="relative z-0 dark:bg-gray-100 focus:ring focus:border-white  dark:text-gray-800 ">
+        <div className="relative z-0 dark:bg-gray-100 focus:ring focus:border-white dark:text-gray-800 ">
           <MatchText />
           <textarea
             rows={textAreaRow}
