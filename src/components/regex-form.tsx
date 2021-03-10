@@ -54,13 +54,13 @@ const RegexForm: React.FC = () => {
           Flags
         </span>
       </div>
-      <div className="grid grid-cols-9 justify-between text-2xl py-4 form-input mt-1 block w-full  dark:bg-gray-100">
+      <div className="flex justify-between text-2xl py-4 form-input mt-1 block w-full dark:bg-gray-100">
         <ContentEditable
           html={`${regexText}`}
           disabled={false}
           onChange={(e) => updateRegexText(e.target.value)}
           tagName="div"
-          className="dark:text-gray-700 col-span-8 outline-none"
+          className="dark:text-gray-700 outline-none mr-1 break-words"
         />
         <div
           role="button"
