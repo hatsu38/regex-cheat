@@ -52,7 +52,7 @@ const MatchText: React.FC = () => {
 
   return (
     <>
-      <div className="overflow-auto">
+      <div className="overflow-hidden">
         <div className="absolute top-0 form-input mt-1 text-xl bg-transparent">
           {lines.map((line: string, i: number) => (
             <React.Fragment key={i}>
